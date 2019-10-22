@@ -1,0 +1,36 @@
+L1= Link([0 27.55 0 pi/2], 'standard');
+L2= Link([0 0 0 pi/2], 'standard');
+L3= Link([0 41.0 0 pi/2], 'standard');
+L4= Link([0  00.98 0 pi/2], 'standard');
+L5= Link([0 31.11 0 pi/2], 'standard');
+L6= Link([0 0 0 pi/2], 'standard');
+L7= Link([0 26.38 0 pi], 'standard');
+links=[L1 L2 L3 L4 L5 L6 L7];
+R=SerialLink(links);
+R.n
+
+q0=[-.125 -.6912 pi 2.00 2.75 1.44 2.26];
+q1=[pi pi pi pi pi pi pi];
+q2=[0 1.7453 4.8869 1.1345 0.1745 3.6652 3.6652];
+q3 = [4.7647 3.1940 6.8068 0.8552 4.5029 5.0265 5.0265];
+q4 = [5.6374 3.6652 2.8972 1.5359 3.3161 4.0666 4.0666];
+q5 = [4.9393 2.8449 0 0.7679 4.6251 4.5029 4.5029];
+% R.fkine(q)
+%R.plot(q0)
+t = [0:.05:2]'; 	% generate a time vector
+qt1 = jtraj(q0, q1, t); % generate joint coordinate trajectory
+
+R.plot(qt1);
+qt2 = jtraj(q1, q2, t);
+R.plot(qt2);
+
+qt3 = jtraj(q2, q3, t);
+R.plot(qt3);
+
+qt4 = jtraj(q3, q4, t);
+R.plot(qt4);
+
+qt5 = jtraj(q4, q5, t);
+R.plot(qt5);
+
+
